@@ -4,6 +4,7 @@
 __pycache__/
 *.py[codz]
 *$py.class
+
 # =========================
 # Virtual env / local env
 # =========================
@@ -14,11 +15,13 @@ __pycache__/
 venv/
 env/
 ENV/
+
 # =========================
 # Local secrets / configs
 # =========================
 config.local.json
 **/config.local.json
+
 # =========================
 # Runtime data / fetched data
 # =========================
@@ -28,9 +31,11 @@ outputs/
 **/outputs/
 archive/
 **/archive/
+
 # Shared latest dataset
 latest-clients.json
 **/latest-clients.json
+
 # =========================
 # Build / package artifacts
 # =========================
@@ -39,6 +44,7 @@ build/
 *.skill
 *.egg-info/
 .eggs/
+
 # =========================
 # Test / coverage / lint cache
 # =========================
@@ -53,11 +59,13 @@ htmlcov/
 .hypothesis/
 .tox/
 .nox/
+
 # =========================
 # Jupyter / misc Python tooling
 # =========================
 .ipynb_checkpoints/
 __pypackages__/
+
 # =========================
 # IDE / editor / OS noise
 # =========================
