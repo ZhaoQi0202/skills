@@ -144,3 +144,29 @@ python3 skills/xiaowu-market-pipeline/scripts/wechat_mp_publish.py \
 
 通常表示当前公众号账号不具备 `freepublish/submit` 接口权限。
 这属于账号能力边界，不代表脚本逻辑错误。
+
+
+## 本地配置文件
+
+推荐将微信公众号配置放在：
+
+```text
+runtime/xiaowu-market-pipeline/config.local.json
+```
+
+仓库中只保留 `config.template.json`，不要提交真实 `app_id`、`app_secret`、图片接口 token。
+
+当前 `wechat_mp_publish.py` 支持通过命令行显式传入 `--app-id` 与 `--app-secret`；如需长期本地使用，建议由外部流程先读取本地配置，再传入脚本。
+
+## 已知权限问题
+
+如果 `freepublish/submit` 返回：
+
+```json
+{
+  "errcode": 48001,
+  "errmsg": "api unauthorized ..."
+}
+```
+
+通常表示当前公众号账号没有自动发布权限；此时脚本可以创建草稿，但无法自动正式发布。这属于账号权限边界，不一定是脚本错误。

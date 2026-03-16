@@ -111,6 +111,18 @@ def get_publish_status(access_token: str, publish_id: str) -> dict:
     return r.json()
 
 
+
+
+def validate_rendered_html(content: str) -> None:
+    bad_patterns = [
+        r'>\s*#\s+',
+        r'>\s*##\s+',
+        r'>\s*###\s+',
+    ]
+    for pattern in bad_patterns:
+        if re.search(pattern, content):
+            raise RuntimeError('Rendered HTML still contains Markdown heading markers. Fix article rendering before creating draft.')
+
 def main() -> int:
     p = argparse.ArgumentParser()
     p.add_argument('--config', help='Path to config.local.json or config.template-based local config')
@@ -159,6 +171,7 @@ def main() -> int:
     compress_cover(cover_src, cover_tmp)
     thumb = upload_thumb(access_token, cover_tmp)
     content = Path(args.content_file).read_text(encoding='utf-8')
+    validate_rendered_html(content)
     forbidden_markdown = ['<p style="margin:32px 0 14px 0;font-size:20px;line-height:1.5;font-weight:700;color:#111;"># ', '>## ', '>### ', '\n# ', '\n## ', '\n### ']
     if any(marker in content for marker in forbidden_markdown):
         raise SystemExit('Rendered HTML still appears to contain Markdown heading remnants. Fix rendering before creating draft.')

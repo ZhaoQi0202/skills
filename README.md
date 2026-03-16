@@ -62,6 +62,11 @@ skills/
   - 输出共享最新数据文件
   - 供后续分析类 skill 直接消费
 
+- `skills/xiaowu-market-pipeline`
+  - 生成《小五的市场笔记》市场复盘文章与公众号封面
+  - 渲染公众号 HTML
+  - 创建草稿、提交发布、查询发布状态
+
 ## 约定
 
 - 每个 skill 独立维护在 `skills/{skill-name}/`

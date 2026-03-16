@@ -1,12 +1,12 @@
 {
+  "image_api": {
+    "url": "",
+    "bearer_token": ""
+  },
   "wechat": {
     "app_id": "",
     "app_secret": "",
     "author": "小五",
     "source_url": ""
-  },
-  "image_api": {
-    "url": "",
-    "bearer_token": ""
   }
 }

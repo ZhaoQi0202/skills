@@ -111,6 +111,29 @@ runtime/xiaowu-market-pipeline/config.local.json
 - 提交自动发布
 - 查询发布状态
 
+## 本地配置
+
+发布到 skills 仓库时，不要携带任何真实鉴权信息。
+
+只保留 `config.template.json` 作为模板；本机运行时，从：
+
+```text
+runtime/xiaowu-market-pipeline/config.local.json
+```
+
+读取真实配置。至少包括：
+
+- `image_api.url`
+- `image_api.bearer_token`
+- `wechat.app_id`
+- `wechat.app_secret`
+
+不要把真实值写进：
+- `SKILL.md`
+- `README.md`
+- `references/*.md`
+- `scripts/*.py`
+
 ## 安全规则
 
 - 创建草稿通常可以直接执行。
